@@ -1,6 +1,6 @@
 <?php
 include "../_util/config.php";
-$whitelisted = true;
+$blacklisted = true; // Make it make sense.
 $m = true;
 
 $ip = $_SERVER["REMOTE_ADDR"];
@@ -22,7 +22,7 @@ $whitelisted_ips = array(
 
 foreach($whitelisted_ips as $ip) {
 	if($_SERVER["REMOTE_ADDR"] == $ip) {
-		$whitelisted = false;
+		$blacklisted = false;
 		break;
 	}
 }
@@ -31,7 +31,7 @@ if($m && $_SERVER["REMOTE_ADDR"] != "::1") {
 	die("This page is down for maintenance");
 }
 
-if($whitelisted) {
+if($blacklisted) {
 	die("Whitelisted.");
 }
 ?>
