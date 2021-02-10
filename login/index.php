@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 			$error = "The email you provided is invalid.";
 		}
 	} else {
-		$error = "Email was not provided";
+		$error = "Email was not provided.";
 	}
 	// END OF EMAIL VALIDATION //
 
@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 					$_SESSION["username"] = $row["username"];
 					header("Location: /home");
 				} else {
-					$error = "Invalid Credentials.";
+					$error = "Invalid credentials.";
 				}
 			}
 		}
