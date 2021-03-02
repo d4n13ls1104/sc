@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 			$error = "The email you provided is invalid.";
 		}
 	} else {
-		$error = "Email was not provided.";
+		$error = "Email was not provided";
 	}
 	// END OF EMAIL VALIDATION //
 
@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 					$_SESSION["username"] = $row["username"];
 					header("Location: /home");
 				} else {
-					$error = "Invalid credentials.";
+					$error = "Invalid Credentials.";
 				}
 			}
 		}
@@ -65,28 +65,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <meta name="robots" content="noindex"/>
-    <title>Sandchat</title>
-    <link rel="shortcut icon" href="../_util/favicon.ico"/>
-    <link rel="stylesheet" href="styles.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sandchat</title>
+		<link rel="shortcut icon" href="../_util/favicon.ico"/>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   </head>
-  <body>
-    <div id="header">
-      <img src="../img/sandchatlogo.png" id="logo"/>
-      <div id="logotext"><h1 style="color:#fff;">Sand</h1><h1 style="color:#26aa5a;">Chat</h1></div>
-    </div>
+  <body class="bg-gray-100">
+    <div class="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md rounded-lg">
+            <div class="py-8 px-8 rounded-xl">
+                <h1 class="font-medium text-3xl mt-2 text-center">Login</h1>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" autocomplete="off" class="mt-6">
+                    <div class="my-5 text-sm">
+                        <label for="email" class="block text-black">Username</label>
+                        <input type="text" name="email" autofocus id="email" class="rounded-md px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Email" />
+                    </div>
+                    <div class="my-5 text-sm">
+                        <label for="password" class="block text-black">Password</label>
+                        <input type="password" name="password" class="rounded-md px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Password" />
+                        <div class="flex justify-end mt-2 text-xs text-gray-600">
+                           <a href="#" title="Coming Soon I guess">Forgot Password?</a>
+                        </div>
+                        <div class="flex mt-2 inline-block text-red-600">
+                          <span><?php echo $error; ?></span>
+                        </div>
+                    </div>
 
-    <div id="register-wrapper">
-			<span id="error"><?php echo $error ?></span>
-      <h1>Login</h1>
-      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" autocomplete="off">
-        <input type="text" class="input" placeholder="Email" name="email"/>
-        <input type="password" class="input" placeholder="Password" name="password" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;"/>
-				<span>By logging into this site you agree to our <a href="/privacy" target="_blank">Privacy Policy</a> & <a href="/privacy" target="_blank">Terms of Service</a></span>
-        <button id="submit" name="submit" type="submit">Login</button>
-      </form>
-    </div>
+                    <button class="block text-center text-white bg-indigo-500 p-3 duration-300 rounded-md hover:bg-indigo-600 w-full" name="submit">Login</button>
+                </form>
+
+                <p class="mt-12 text-xs text-center font-light text-gray-400"> Don't have an account? <a href="/register" class="text-black font-medium"> Create One </a>  </p>
+            </div>
+        </div>
   </body>
 </html>
