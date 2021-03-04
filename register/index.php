@@ -107,30 +107,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <meta name="robots" content="noindex"/>
-    <title>Sandchat</title>
-    <link rel="shortcut icon" href="../_util/favicon.ico"/>
-    <link rel="stylesheet" href="styles.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sandchat</title>
+		<link rel="shortcut icon" href="../_util/favicon.ico"/>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   </head>
-  <body>
-    <div id="header">
-      <img src="../img/sandchatlogo.png" id="logo"/>
-      <div id="logout"><a href="/_util/logout.php">LOGOUT</a></div>
-      <div id="logotext"><h1 style="color:#fff;">Sand</h1><h1 style="color:#26aa5a;">Chat</h1></div>
-    </div>
+  <body class="bg-gray-100">
+    <div class="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md rounded-lg">
+            <div class="py-8 px-8 rounded-xl">
+                <h1 class="font-medium text-3xl mt-2 text-center">Register</h1>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" autocomplete="off" class="mt-6">
+                    <div class="my-5 text-sm">
+                        <label for="email" class="block text-black">Email</label>
+                        <input type="text" name="email" autofocus id="email" class="rounded-md px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Email" />
+                    </div>
+										<div class="my-5 text-sm">
+											<label for="username" class="block text-black">Username</label>
+											<input type="text" name="username" id="username" class="rounded-md px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Username"/>
+										</div>
+                    <div class="my-5 text-sm">
+                        <label for="password" class="block text-black">Password</label>
+                        <input type="password" name="password" class="rounded-md px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Password" />
+                        <div class="flex mt-2 inline-block text-red-600">
+                          <span><?php echo $error; ?></span>
+                        </div>
+                    </div>
 
-    <div id="register-wrapper">
-			<span id="error"><?php echo $error ?></span>
-      <h1>Create an account</h1>
-      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" autocomplete="off">
-        <input type="text" class="input" placeholder="Email" name="email"/>
-        <input type="text" class="input" placeholder="Username" name="username"/>
-        <input type="password" class="input" placeholder="Password" name="password" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;"/>
-        <button id="submit" name="submit" type="submit">Create Account</button>
-      </form>
-    </div>
+                    <button class="block text-center text-white bg-indigo-500 p-3 duration-300 rounded-md hover:bg-indigo-600 w-full" name="submit">Register</button>
+                </form>
 
+                <p class="mt-12 text-xs text-center font-light text-gray-400"> Already have an account? <a href="/login" class="text-black font-medium"> Login </a>  </p>
+            </div>
+        </div>
   </body>
 </html>
