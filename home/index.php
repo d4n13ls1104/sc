@@ -1,40 +1,79 @@
 <?php
 include '../_util/whitelist.php';
+include '../_util/config.php';
 session_start();
 
 if(!isset($_SESSION["uid"])) header("/login");
+
+$username = "";
+$id = mysqli_real_escape_string($conn, $_SESSION["uid"]);
+
+if($dataFetch = mysqli_query($conn, "SELECT username FROM users WHERE uid='$id' LIMIT 1")) {
+  $username = mysqli_fetch_object($dataFetch)->username;
+} else {
+  $username = "Error loading username.";
+}
+
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sandchat</title>
-    <meta charset="utf-8"/>
-      <link rel="shortcut icon" href="../_util/favicon.ico"/>
-      <link rel="stylesheet" href="styles.css"/>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="shortcut icon" href="../_util/favicon.ico"/>
+    <link rel="stylesheet" href="styles.css"/>
+    <script>
+      function redirect(url) {
+        window.location.href = url;
+      }
+    </script>
   </head>
   <body>
-    <div id="banner" class="container-fluid">
-      <img src="../img/sandchatlogo.png" id="logo" draggable="false"/>
-      <div class="items-right">
-        <div style="display:table-cell;vertical-align:middle;">
-          <a id="logout" href="/_util/logout.php">LOGOUT</a>
+    <div id="layout_wrapper">
+      <div id="nav_wrapper">
+        <div id="search" align="center">
+          <input type="search" placeholder="Find or start a conversation" id="contact-search"/>
         </div>
-      </div>
-    </div>
-    <div id="layout-wrapper">
-      <div id="contact-wrapper">
-        <div class="contact-item">
-          <img class="contact-avatar" src="../img/sandchatlogo.png"/>
-          <span class="contact-label">Sand Tee Global</span>
-        </div>
-      </div>
-      <div id="chat-wrapper" align="center">
-          <input id="message-input" type="text" name="message" placeholder="Message Sand Tee Global"/>
+        <nav id="personal_nav">
+          <img id="avatar" src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" draggable="false"/>
+          <span id="username_label"><?php echo htmlspecialchars($username); ?></span>
+          <img src="../img/settingsgraphic.svg" id="settings-btn" draggable="false" onclick="redirect('/settings');"/>
+        </nav>
+        <nav id="channel_nav">
+          <div class="channel_item">
+            <img src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" class="channel_thumbnail"/>
+            <span class="channel_label">Drew</span>
+            <span class="channel_close">&#10006;</span>
+          </div>
+          <div class="channel_item">
+            <img src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" class="channel_thumbnail"/>
+            <span class="channel_label">Drew</span>
+            <span class="channel_close">&#10006;</span>
+          </div>
+          <div class="channel_item">
+            <img src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" class="channel_thumbnail"/>
+            <span class="channel_label">Drew</span>
+            <span class="channel_close">&#10006;</span>
+          </div>
+          <div class="channel_item">
+            <img src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" class="channel_thumbnail"/>
+            <span class="channel_label">Drew</span>
+            <span class="channel_close">&#10006;</span>
+          </div>
+          <div class="channel_item">
+            <img src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" class="channel_thumbnail"/>
+            <span class="channel_label">Drew</span>
+            <span class="channel_close">&#10006;</span>
+          </div>
+          <div class="channel_item">
+            <img src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" class="channel_thumbnail"/>
+            <span class="channel_label">Drew</span>
+            <span class="channel_close">&#10006;</span>
+          </div>
+        </nav>
       </div>
     </div>
   </body>

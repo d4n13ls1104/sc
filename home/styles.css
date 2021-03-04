@@ -1,124 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 html, body {
-  background-color:#E1E8ED;
+  height:100%;
+  width:100%;
   margin:0px;
-  font-family:'Source Sans Pro', sans-serif;
+  background-color:rgb(243, 244, 246);
+  font-family:'Roboto', sans-serif;
 }
 
-#banner {
+::-webkit-scrollbar {
+  display:none;
+}
+
+#layout_wrapper {
+  display:flex;
+  flex-direction:column;
   position:relative;
   width:100%;
-  height:9vh;
-  border-bottom:1.5px solid #9b9b9b;
-  background-color:#fff;
-  vertical-align:middle;
-  padding-bottom:10px;
-  padding-top:10px;
-  box-shadow: 0px 4px 5px 4px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 0px 4px 5px -4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 4px 5px -4px rgba(0,0,0,0.75);
-  box-sizing:border-box;
-  z-index:3;
-}
-
-#logo {
   height:100%;
-  vertical-align:middle;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  -o-user-select:none;
-  -webkit-user-select:none;
-  user-select:none;
 }
 
-#logout {
-  color:#bfbfbf;
+
+#nav_wrapper {
+  height:100%;
+  width:16rem;
   position:relative;
-  font-weight:bold
-  vertical-align:middle;
-  margin-right:10px;
-  line-height:5.5vh;
-  transition:background-color 200ms;
-  transition:color 200ms;
-  padding:10px;
-  text-decoration:none;
-  border-radius:7px;
-  font-size:16px;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  -o-user-select:none;
-  user-select:none;
+  background-color:rgb(99, 102, 241);
+  box-sizing:border-box;
 }
 
-#logout:hover {
-  background-color:#bfbfbf;
+#personal_nav {
+  display:flex;
+  width:100%;
+  height:50px;
+  position:absolute;
+  bottom:0px;
+  left:0px;
+  align-items:center;
+  justify-content:flex-end;
+  background-color:rgb(55, 48, 163);
   color:#fff;
+  border-top:4px solid rgb(67, 56, 202);
 }
 
-.items-right {
-  float:right;
-  display:table;
-  height:100%;
-  overflow:hidden;
+#avatar {
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  margin-right:auto;
+  margin-left:10px;
+}
+
+#username_label {
+  font-size:17px;
+  margin-right:auto;
+  margin-left:-41.5%;
+}
+
+#settings-btn {
+  width:23px;
+  height:23px;
+  margin-right:15px;
   cursor:pointer;
+  padding:4px;
+  transition:background-color 100ms ease-out;
+  border-radius:5px;
 }
 
-
-#contact-wrapper {
-  position:relative;
-  width:300px;
-  min-height:100%;
-  background-color:#fff;
-  box-shadow: 3px 0px 5px 0px rgba(191,191,191,0.75);
-  -webkit-box-shadow: 3px 0px 5px 0px rgba(191,191,191,0.75);
-  -moz-box-shadow: 3px 0px 5px 0px rgba(191,191,191,0.75);
-  float:left;
+#settings-btn:hover {
+  background-color:rgb(165, 180, 252);
 }
 
-.contact-item {
-  width:100%;
-  box-sizing:border-box;
-  padding:10px;
-  background-color:#e5e5e5;
-  height:60px;
-  cursor:pointer;
-  float:left;
-  display:table;
-}
-
-.contact-avatar {
-  width:40px;
-  height:100%;
-  margin:0px;
-  display:table-cell;
-}
-
-.contact-label {
-  display:table-cell;
-  vertical-align:middle;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  -o-user-select:none;
-  user-select:none;
-  font-size:16px;
-}
-
-#chat-wrapper {
-  position:absolute;
-  width:700px;
-  min-height:100%;
-  margin-left:300px;
-  z-index:1;
-  background-color:#f00;
-}
-
-#message-input {
-  width:100%;
-  height:40px;
+#contact-search {
   border:none;
-  position:absolute;
-  top:calc(100% - 9vh);
+  outline:none;
+  padding:6px;
+  width:88%;
+  border-radius:3px;
+}
+
+#search {
+  width:100%;
+  margin-top:11px;
+}
+
+#channel_nav {
+  display:flex;
+  overflow-y:scroll;
+  width:100%;
+  height:90%;
+  margin-top:20px;
+  flex-direction:column;
+}
+
+.channel_item {
+  display:flex;
+  width:100%;
+  height:50px;
+  transition:background-color 100ms;
+  cursor:pointer;
+  align-items:center;
+  justify-content:flex-end;
+}
+.channel_item:hover { background-color:rgb(55, 48, 163); }
+.channel_item:hover > .channel_close { opacity:100%; }
+
+.channel_thumbnail {
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  margin-right:auto;
+  margin-left:10px;
+}
+
+.channel_label {
+  color:#fff;
+  margin-right:auto;
+  margin-left:-47%;
+}
+
+.channel_close {
+  color:#fff;
+  margin-right:20px;
+  opacity:0%;
 }
