@@ -35,7 +35,7 @@ if($dataFetch = mysqli_query($conn, "SELECT username FROM users WHERE uid='$id' 
     <div id="layout_wrapper">
       <div id="nav_wrapper">
         <div id="search" align="center">
-          <input type="search" placeholder="Find or start a conversation" id="contact-search"/>
+          <input type="search" placeholder="Find or start a conversation" id="contact_search"/>
         </div>
         <nav id="personal_nav">
           <img id="avatar" src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" draggable="false"/>
@@ -43,10 +43,10 @@ if($dataFetch = mysqli_query($conn, "SELECT username FROM users WHERE uid='$id' 
           <img src="../img/settingsgraphic.svg" id="settings-btn" draggable="false" onclick="redirect('/settings');"/>
         </nav>
         <nav id="channel_nav">
-          <div class="channel_item">
+          <div class="channel_item" style="background-color:#242C37;">
             <img src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" class="channel_thumbnail"/>
             <span class="channel_label">Drew</span>
-            <span class="channel_close">&#10006;</span>
+            <span class="channel_close" style="opacity:100%;">&#10006;</span>
           </div>
           <div class="channel_item">
             <img src="https://cdn.discordapp.com/avatars/610282858418012161/e8e1f22001b4bbc086cc93fbe8a3ec83.png?size=256" class="channel_thumbnail"/>
